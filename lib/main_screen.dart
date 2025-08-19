@@ -55,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
                   weight = value;
                 });
             }),
-            Text("Your BMI is :${bmi.toStringAsPrecision(2)}",style: TextStyle(fontSize: 28),),
+            Text("Your BMI is :${bmi.toStringAsPrecision(4)}",style: TextStyle(fontSize: 28),),
             Text("Category:$category",style: TextStyle(fontSize: 28),)
           ],
         ),
@@ -68,10 +68,15 @@ class _MainScreenState extends State<MainScreen> {
   }
   String get category {
     double current = bmi;
-    if(current < 18.5) return "Underweight";
-    if(current > 18.5 && current < 24.9 ) return "Normal Weight";
-    if(current > 25 && current < 29.9 ) return "Class 1 obesity";
-    if(current > 30 && current < 39.9 ) return "Class 2 obesity";
+    if(current < 18.5) {
+      return "Underweight";
+    }else if(current >= 18.5 && current < 25 ) {
+      return "Normal Weight";
+    }else if(current >= 25 && current < 30 ) {
+      return "Class 1 obesity";
+    }else if(current >= 30 && current < 40 ) {
+      return "Class 2 obesity";
+    }
     return "Class 3 obesity";
   }
 }
